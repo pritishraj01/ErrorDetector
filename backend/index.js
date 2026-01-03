@@ -11,7 +11,7 @@ dotenv.config()
 const port = process.env.PORT
 const app = express()
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://errordetector.onrender.com",
     credentials: true
 }))
 
