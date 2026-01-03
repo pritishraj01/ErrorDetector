@@ -4,7 +4,8 @@ import React, { createContext, useEffect, useState } from 'react'
 export const dataContext = createContext()
 function UserContext({ children }) {
     let serverUrl = "https://errordetector-backend.onrender.com"
-    let [userData,setUserData]= useState("")
+    let [userData,setUserData]= useState(null)
+    let [authLoading,setAuthLoading]= useState(true)
 
     let currentUser= async()=>{
         try {
@@ -12,7 +13,10 @@ function UserContext({ children }) {
             console.log(result)
             setUserData(result.data)
         } catch (error) {
+            setUserData(null)
             console.log(`current user error: ${error}`)
+        }finally{
+            setAuthLoading(false)
         }
     }
 
@@ -20,7 +24,8 @@ function UserContext({ children }) {
         serverUrl,
         currentUser,
         setUserData,
-        userData
+        userData,
+        authLoading
     }
 
     useEffect(()=>{
