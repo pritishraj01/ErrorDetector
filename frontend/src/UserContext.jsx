@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from 'react'
 
 export const dataContext = createContext()
 function UserContext({ children }) {
-    let serverUrl = "http://localhost:8000"
+    let serverUrl = "https://errordetector-backend.onrender.com"
     let [userData,setUserData]= useState("")
 
     let currentUser= async()=>{
