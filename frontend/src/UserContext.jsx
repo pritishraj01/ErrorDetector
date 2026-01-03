@@ -9,7 +9,7 @@ function UserContext({ children }) {
 
     let currentUser= async()=>{
         try {
-            let result= await axios.get(`${serverUrl}/auth/getme`,{withCredentials:true})
+            let result= await axios.get(`${serverUrl}/auth/getme`,{withCredentials:true,timeout: 10000})
             console.log(result)
             setUserData(result.data)
         } catch (error) {
@@ -33,11 +33,9 @@ function UserContext({ children }) {
     },[])
 
     return (
-        <div>
             <dataContext.Provider value={value}>
                 {children}
             </dataContext.Provider>
-        </div>
     )
 }
 
